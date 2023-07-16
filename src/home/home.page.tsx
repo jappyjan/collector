@@ -5,22 +5,14 @@ import React from "react";
 export function HomePage() {
     const {
         collections,
-        collectibles,
         setActiveCollection,
-        saveCollectible,
-        activeCollection,
         addCollection,
         removeCollection,
-        removeCollectible
     } = {
         collections: [],
-        collectibles: [],
         setActiveCollection: (_collection: any) => {},
-        saveCollectible: (_collectible: any) => {},
-        activeCollection: '',
         addCollection: (_collection: any) => {},
         removeCollection: (_collection: any) => {},
-        removeCollectible: (_collectible: any) => {}
     };
 
     const [collectionToAdd, setCollectionToAdd] = React.useState('');
