@@ -1,22 +1,20 @@
 import {useCallback, useEffect, useMemo} from "react";
 import {Auth, getAuth} from "firebase/auth";
 import {firebaseApp} from "../firebase";
-import {Button, useToast} from "@chakra-ui/react";
+import {useToast} from "@chakra-ui/react";
 import {SignInWithPopupHook} from "react-firebase-hooks/auth/dist/auth/types";
 
 interface Props {
     hook: (auth: Auth) => SignInWithPopupHook;
-    name: string;
-    colorScheme: string;
 }
 
-export function SocialLoginButton(props: Props) {
-    const {hook, name, colorScheme} = props;
+export function useSocialLogin(props: Props) {
+    const {hook} = props;
     const auth = useMemo(() => getAuth(firebaseApp), []);
 
     const [
         signIn,
-        ,
+        userCredentials,
         loginIsInProgress,
         loginError
     ] = hook(auth);
@@ -41,13 +39,10 @@ export function SocialLoginButton(props: Props) {
         await signIn([]);
     }, [signIn]);
 
-    return (
-        <Button colorScheme={colorScheme}
-                variant='solid'
-                isLoading={loginIsInProgress}
-                onClick={startSignIn}
-        >
-            Mit {name} anmelden
-        </Button>
-    )
+    return {
+        login: startSignIn,
+        user: userCredentials,
+        inProgress: loginIsInProgress,
+        error: loginError
+    };
 }

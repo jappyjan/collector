@@ -3,8 +3,8 @@ import {
     extendTheme,
     ThemeConfig
 } from "@chakra-ui/react"
-import {AuthWall} from "./auth/auth-wall.component";
-import {HomePage} from "./home/home.page";
+import {CollectionsPage} from "./collections/collections.page";
+import {Layout} from "./Layout";
 
 const config: ThemeConfig = {
     initialColorMode: 'dark',
@@ -15,8 +15,8 @@ const theme = extendTheme(config);
 
 export const App = () => (
     <ChakraProvider theme={theme}>
-        <AuthWall>
-            <HomePage />
-        </AuthWall>
+        <Layout>
+            <CollectionsPage/>
+        </Layout>
     </ChakraProvider>
 )

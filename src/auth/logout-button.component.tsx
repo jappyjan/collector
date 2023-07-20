@@ -4,7 +4,7 @@ import {getAuth} from "firebase/auth";
 import {firebaseApp} from "../firebase";
 import {useSignOut} from "react-firebase-hooks/auth";
 
-export function LogoutButton(props: Omit<ButtonProps, 'onClick'>) {
+export function LogoutButtonComponent(props: Omit<ButtonProps, 'onClick'>) {
     const auth = useMemo(() => getAuth(firebaseApp), []);
     const [
         signOut,
