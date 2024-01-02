@@ -2,7 +2,7 @@ export interface Collection {
     name: string;
     authorId: string;
     isPublic: boolean;
-    thumbnailUri: string;
+    thumbnailUri: string | null;
 }
 
 export interface CollectionItemImage {
